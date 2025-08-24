@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rev Voice Assistant</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Toggle visuals (we'll control movement via JS for reliability) */
+      .toggle-track {
+        width: 56px;
+        height: 32px;
+        border-radius: 9999px;
+        background: #4b5563; /* gray-700 */
+        position: relative;
+        transition: background-color 250ms ease;
+      }
+      .toggle-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 9999px;
+        background: #ffffff;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: transform 250ms cubic-bezier(0.2, 0.9, 0.2, 1),
+          box-shadow 200ms;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        will-change: transform;
+      }
+      .toggle-track.on {
+        background: #d1d5db; /* gray-300 for light track when ON? we'll set colors in JS */
+      }
+      /* small accessibility focus */
+      .toggle-input:focus + .toggle-track {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+      }
+
+      /* Transition for body colors */
+      .theme-transition {
+        transition: background-color 250ms ease, color 250ms ease;
+      }
+    </style>
+  </head>
+  <body
+    id="body"
+    class="theme-transition bg-black text-white h-screen flex flex-col items-center justify-center"
+  >
+    <!-- Toggle Switch (custom) -->
+    <div class="absolute top-6 right-6">
+      <label
+        class="inline-flex items-center cursor-pointer"
+        aria-label="Toggle theme"
+      >
+        <input
+          id="themeToggle"
+          class="toggle-input sr-only"
+          type="checkbox"
+          checked
+        />
+        <div
+          id="toggleTrack"
+          class="toggle-track"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div id="toggleDot" class="toggle-dot"></div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="text-xl mb-6 font-semibold">Tap to Talk</div>
+
+    <!-- Mic Button -->
+    <button
+      id="mic-btn"
+      class="w-24 h-24 rounded-full bg-violet-600 flex items-center justify-center hover:bg-violet-700 shadow-lg active:scale-95"
+    >
+      <i id="mic-icon" class="fa-solid fa-microphone text-4xl text-white"></i>
+    </button>
+
+    <!-- Branding -->
+    <div
+      id="brand"
+      class="absolute bottom-6 text-sm tracking-wide opacity-80 text-white"
+    >
+      Powered by Revolt Motors
+    </div>
+
+    <!-- Audio -->
+    <audio id="audio" autoplay></audio>
+
+    <!-- Mic Start/Stop Sounds -->
+    <audio id="startSound" src="./start.mp3"></audio>
+    <audio id="stopSound" src="./stop.mp3"></audio>
+
+    <!-- JS -->
+    <script src="./script.js"></script>
+  </body>
+</html>
