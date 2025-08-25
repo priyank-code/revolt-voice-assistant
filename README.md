@@ -67,6 +67,6 @@ This AI assistant is **configured to only answer queries related to Revolt Motor
 ## 👨‍💻 Author
 Developed with ❤️ by **Priyank Vaghani**  
 
-📧 Email: [priyankv.dev@gmail.com](mailto:priyankv.dev@gmail.com)  
+📧 Email: [vaghanipriyank1@gmail.com](mailto:vaghanipriyank1@gmail.com)  
 🔗 LinkedIn: [linkedin.com/in/priyank-vaghani](https://linkedin.com/in/priyankvaghani)  
 💻 GitHub: [github.com/priyank-code](https://github.com/priyank-code) 
