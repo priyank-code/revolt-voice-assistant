@@ -2,8 +2,7 @@ const micBtn = document.getElementById('mic-btn');
 const micIcon = document.getElementById('mic-icon');
 const statusText = document.getElementById('status');
 
-const ws = new WebSocket('wss://revolt-voice-assistant.onrender.com');
-//ws://localhost:8080
+const ws = new WebSocket('ws://localhost:8080');
 let isListening = false;
 let currentUtterance = null; 
 
